@@ -1,0 +1,19 @@
+body {
+    background: url('../img/background.jpg') no-repeat center center fixed;
+    background-size: cover;
+    font-family: 'Terminator', sans-serif; /* Add your custom Terminator font */
+  }
+  
+  .progress-bar {
+    background-color: #ff0000; /* Skynet Red */
+  }
+  
+  #status-text {
+    color: #ff0000;
+    font-weight: bold;
+  }
+  
+  #play-music {
+    color: white;
+  }
+  
