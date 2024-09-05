@@ -1,19 +1,60 @@
+/* Background and overall page styling */
 body {
     background: url('../img/background.jpg') no-repeat center center fixed;
     background-size: cover;
-    font-family: 'Terminator', sans-serif; /* Add your custom Terminator font */
+    color: #ff0000; /* Skynet red for the primary text */
+    font-family: 'Terminator', sans-serif; /* Custom Terminator font */
+    height: 100vh;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
   }
   
+  /* Skynet themed progress bar */
   .progress-bar {
-    background-color: #ff0000; /* Skynet Red */
+    background-color: #ff0000; /* Skynet red */
+    font-weight: bold;
+    font-size: 1.2rem;
+    transition: width 0.5s ease; /* Smooth progress bar transitions */
   }
   
+  /* Status text styling */
   #status-text {
     color: #ff0000;
+    font-size: 1.5rem;
     font-weight: bold;
+    text-transform: uppercase; /* Give it a strong Skynet look */
+    margin-top: 15px;
   }
   
+  /* Music button styling */
   #play-music {
+    background-color: #ff0000;
+    border: 2px solid #ff0000;
     color: white;
+    font-size: 1rem;
+    margin-top: 20px;
+    transition: background-color 0.3s, color 0.3s;
+  }
+  
+  #play-music:hover {
+    background-color: white;
+    color: #ff0000;
+  }
+  
+  /* Centering elements vertically and horizontally */
+  .container {
+    max-width: 800px;
+  }
+  
+  /* Override Bootstrap text styling */
+  h1 {
+    font-size: 3rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #ff0000;
+    margin-bottom: 20px;
   }
   
