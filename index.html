@@ -9,22 +9,26 @@
   <link rel="stylesheet" href="css/style.css"> <!-- Custom styles -->
 </head>
 <body>
-  <div class="container text-center text-white" style="margin-top: 20vh;">
-    <h1 class="display-4">Skynet Systems Initializing...</h1>
-    
-    <div class="progress" style="height: 30px;">
-      <div id="progress-bar" class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">0%</div>
-    </div>
+  <div class="container text-center text-white vh-100 d-flex align-items-center justify-content-center">
+    <div class="row">
+      <div class="col">
+        <h1 class="display-4 mb-4">Skynet Systems Initializing...</h1>
 
-    <p id="status-text" class="mt-3">Preparing resources...</p>
+        <div class="progress" style="height: 30px;">
+          <div id="progress-bar" class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">0%</div>
+        </div>
+
+        <p id="status-text" class="mt-3">Preparing resources...</p>
+      </div>
+    </div>
   </div>
 
   <!-- Optional Audio -->
-  <audio id="bg-music" src="audio/bg-music.mp3" loop></audio>
-  <button id="play-music" class="btn btn-danger">Click to Start Music</button>
+  <audio id="bg-music" src="audio/futurewarambiance.mp3" loop></audio>
+  <button id="play-music" class="btn btn-danger mt-4">Click to Start Music</button>
 
   <!-- Bootstrap JS and Custom JS -->
-  <script src="vendor/jquery.min.js"></script> <!-- Optional -->
+  <script src="vendor/jquery.min.js"></script>
   <script src="vendor/bootstrap.min.js"></script>
   <script src="js/loading.js"></script> <!-- Custom JavaScript -->
 </body>
