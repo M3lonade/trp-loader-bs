@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 });
 
-// Scrolling data text overlays
+ /* --- T2 style scrolling text --*/
 document.addEventListener('DOMContentLoaded', function () {
 
   function getRandomAssemblyLine() {
@@ -130,15 +130,23 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 /*--Welcome Message--*/
+// This part is simulated for local testing
 document.addEventListener('DOMContentLoaded', function () {
-  // Simulate the player's name (this could come from GMod hooks in the real scenario)
-  const playerName = "Survivor";  // Simulated player name
-  
-  // Update the player name in the DOM
-  document.getElementById('playerName').innerText = `Welcome to the Future War, ${playerName}`;
-  
-  // Simulate server status being updated after 2 seconds (could come from GMod)
+  // Simulate GMod hook call for player name
+  let playerName = "Survivor";  // Default player name for local testing
+
+  // In GMod, this will be set by the game hook
+  window.SetStatusChanged = function (status) {
+    if (status.includes("Player")) {
+      playerName = status.split(" ")[1]; // Extract player name from status message
+    }
+
+    // Update the player name in the DOM
+    document.getElementById('playerName').innerText = `Welcome to the Future War, ${playerName}`;
+  };
+
+  // Fallback for local testing if GMod hook is not called
   setTimeout(() => {
-    document.getElementById('serverStatus').innerText = "Skynet systems are online. Preparing battlefield resources...";
-  }, 3000);
+    document.getElementById('playerName').innerText = `Welcome to the Future War, ${playerName}`;
+  }, 3000); // Simulated 3-second delay for local testing
 });
