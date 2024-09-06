@@ -35,8 +35,8 @@ body {
 /* Logo and text */
 .logo {
   position: relative;
-  width: 20vw;  /* Adjusted size to make it smaller */
-  max-width: 200px;  /* Cap size to prevent it from being too large */
+  width: 30w;  /* Adjusted size to make it smaller */
+  max-width: 300px;  /* Cap size to prevent it from being too large */
   height: auto;
   margin-bottom: 2vh;
   z-index: 2;  /* Ensure it sits above background elements */
