@@ -2,6 +2,12 @@
 
 var Config = {};
 
+window.motdArray = [
+  "Welcome to Terminator Roleplay!",
+  "Join the community at www.taconbanana.com, hosting roleplay excellence since 2007.",
+];
+
+
 const rumors = [
     "Judgment Day: July 25th, 2004. Skynet becomes self-aware.",
     "Was talking to my brother over the radio the other day. He said his boys saw a battleship floating in the air. It passed by them on it's way east. The guy's gone nuts, I'm telling ya.",
@@ -13,7 +19,8 @@ const rumors = [
     "Emergency food and water distribution centers will be open again Thursday, and will remain open until stock is exhausted. Water rationing, and water-boil advisory still in effect for Clallam County, Jefferson County, Kitsap Coun---",
     "Pay attention if you’re out in cities; seen some hobo code spray painted on walls that’s pretty recent. Get Kelly to give you a quick lesson on it, those symbols could save you from a ‘bot if you’ve got a good eye. - K. Davis",
     "There is a man named Shoes who never sleeps. He walks and talks like a robot. I've seen him drinking motor oil and some tell me he breathes diesel exhaust. Last night I swear I could see his eyes glowing like cosmic pearls beneath the old moon. His name is Shoes and he never sleeps. - Stranger",
-    "DON'T GO ANYWHERE NEAR COVILLE NATIONAL PARK!"
+    "DON'T GO ANYWHERE NEAR COVILLE NATIONAL PARK!",
+    "What is it that makes us human? It’s not something you can program. You can’t put it into a chip. It’s the strength of the human heart. The difference between us and machines."
  ];
 
 

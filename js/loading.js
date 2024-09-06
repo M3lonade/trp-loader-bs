@@ -104,7 +104,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // Start scrolling text on both sides
   addLeftAssemblyLine();
-  addRightAssemblyLine();
 });
 
   /* Cursortyper */
@@ -156,3 +155,22 @@ document.addEventListener('DOMContentLoaded', function () {
     typeText();
   });
   
+  document.addEventListener('DOMContentLoaded', function () {
+    const loreFeed = document.getElementById('lore-feed');
+  
+    // Lore updates will come from your config.js
+    const loreUpdates = window.motdArray; // Assuming 'loreFeedArray' is in config.js
+  
+    // Function to cycle through lore updates
+    let loreIndex = 0;
+    function updateLoreFeed() {
+      loreFeed.textContent = loreUpdates[loreIndex];
+      loreIndex = (loreIndex + 1) % loreUpdates.length; // Loop through array
+    }
+  
+    // Initial update
+    updateLoreFeed();
+  
+    // Update the lore feed every 5 seconds
+    setInterval(updateLoreFeed, 7000);
+  });
