@@ -2,24 +2,22 @@ document.addEventListener('DOMContentLoaded', function () {
   const music = document.getElementById('background-music');
   const playMusicButton = document.getElementById('play-music');
 
-  // GMod Hook: Autoplay music if GMod is the environment (assumed that GMod won't block autoplay)
+  // Autoplay music for GMod (and fallback for browser testing)
   function autoPlayMusic() {
     music.volume = 0.5; // Set volume
     music.play()
       .then(() => {
-        console.log("Music is playing automatically!");
-        playMusicButton.style.display = "none"; // Hide the button when autoplay works
+        playMusicButton.style.display = "none"; // Hide button when autoplay works
       })
-      .catch((error) => {
-        console.error("Autoplay failed, falling back to click to play", error);
-        playMusicButton.style.display = "block"; // Show the button if autoplay fails
+      .catch(() => {
+        playMusicButton.style.display = "block"; // Show button if autoplay fails
       });
   }
 
   // Try to autoplay music
   autoPlayMusic();
 
-  // Fallback for browsers: Click to start music
+  // Fallback for browsers: Click to start/stop music
   playMusicButton.addEventListener('click', function () {
     if (music.paused) {
       music.play();
@@ -29,6 +27,7 @@ document.addEventListener('DOMContentLoaded', function () {
       playMusicButton.innerText = "Click to Start Music";
     }
   });
+});
 
 /* --- T2 style scrolling text --*/
 document.addEventListener('DOMContentLoaded', function () {
@@ -175,7 +174,7 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
     // Start checking for the player name (in case it's delayed)
-  checkPlayerName();
+    checkPlayerName();
 
   // Fallback for local testing if GMod hook is not called
   setTimeout(() => {
@@ -222,4 +221,3 @@ document.addEventListener('DOMContentLoaded', function () {
     // Start the typing effect initially
     typeText();
   });
-  
