@@ -16,32 +16,49 @@
 <body>
   <!-- Loading Wrapper: centers content on the page -->
   <div id="loading-wrapper">
-
-    <!-- Logo -->
+  <!-- Top Right Container for Logo and Headers -->
+  <div id="top-right">
     <div class="logo">
       <img src="img/skynetlogo.png" alt="Logo">
     </div>
-
-    <!-- Welcome Message -->
     <h1 class="scan-text">The Future War</h1>
     <h2 class="scan-text">Olympia, Washington</h2>
     <h3 class="scan-text">Terminator Serious Roleplay</h3>
+  </div>
 
-    <!-- Assembly Code Feeds for left and right columns -->
-    <div class="assembly-feed-left" id="assembly-feed-left"></div>
-    <div class="assembly-feed-right" id="assembly-feed-right"></div>
-
-    <!-- Console Element (for terminal-style text) -->
-    <div id="console">
-      <span id="console-text">> </span><span id="cursor">|</span>
+  <!-- Assembly Feed Left Column -->
+  <div class="assembly-feed-container-left">
+    <div class="assembly-feed-left" id="assembly-feed-left">
+      <!-- Left assembly code will be generated here -->
     </div>
+  </div>
 
-    <!-- Music Button and Audio Element -->
-    <button id="play-music" class="btn btn-danger">Start Music (browser-override)</button>
-    <audio id="background-music" src="audio/futurewarambiance.mp3" loop></audio>
+  <!-- Assembly Feed Right Column -->
+  <div class="assembly-feed-container-right">
+    <div class="assembly-feed-right" id="assembly-feed-right">
+      <!-- Right assembly code will be generated here -->
+    </div>
+  </div>
+
+  <!-- Bracket Container (with map and scanlines) -->
+  <div id="bracket-container" class="bracket-container" style="display:none;">
+    <div id="map-container" class="map-container">
+      <img src="img/washingtonmap2.png" class="map-image" alt="Map">
+    </div>
+    <div class="holo-scanlines"></div> <!-- Scanlines overlay -->
+  </div>
+
+  <!-- Console Element (for terminal-style text) -->
+  <div id="console">
+    <span id="console-text">> </span><span id="cursor">|</span>
+  </div>
+
+  <!-- Music Button and Audio Element -->
+  <button id="play-music">Start Music (browser-override)</button>
+  <audio id="background-music" src="audio/futurewarambiance.mp3" loop></audio>
 
     <!-- Scanlines effect -->
-    <div class="scanlines"></div>
+  <div class="scanlines"></div>
     
   </div> <!-- End of loading-wrapper -->
 
@@ -52,6 +69,7 @@
   <!-- Custom Scripts -->
   <script src="js/config.js"></script> <!-- Config Values -->
   <script src="js/loading.js"></script> <!-- Custom JavaScript -->
+  <script src="js/mapanim.js"></script> <!-- JS for map animation -->
 </body>
 
 </html>

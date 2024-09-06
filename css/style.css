@@ -1,13 +1,13 @@
-/* Background styling for body */
+/* Body Background and General Styling */
 body {
   background: url('../img/background.jpg') no-repeat center center fixed;
   background-size: cover;
-  animation: panZoomEffect 60s ease-in-out infinite alternate; /* Pan and tilt effect */
+  animation: panZoomEffect 60s ease-in-out infinite alternate;
   color: #ff0000; /* Terminator red for text */
   font-family: 'Courier New', Courier, monospace; /* Monospaced font for a more techy look */
   height: 100vh;
   margin: 0;
-  overflow: hidden; /* Ensure no scrolling if elements overflow */
+  overflow: hidden;
   opacity: 0.9;
 }
 
@@ -22,24 +22,33 @@ body {
 /* Loading Wrapper */
 #loading-wrapper {
   display: flex;
-  flex-direction: column;  /* Align items in a column */
-  justify-content: center;  /* Vertically center */
-  align-items: center;      /* Horizontally center */
-  height: 100vh;            /* Full-screen height */
+  flex-direction: column;
+  justify-content: flex-end;
+  height: 100vh;
   background-color: rgba(0, 0, 0, 0.8); /* Background contrast */
-  padding: 0 2vw;           /* Adjust padding for smaller screens */
+  padding: 0 2vw;
   position: relative;
-  z-index: 2;               /* Ensure it's above background elements */
+  z-index: 2;
 }
 
-/* Logo and text */
+/* Top Right Logo and Text (HUD) */
+#top-right {
+  position: absolute;
+  top: 20px;
+  right: 20px; /* Adjust to top-right */
+  z-index: 10;
+  text-align: right; /* Align text to the right */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end; /* Ensure content is aligned to the right */
+}
+
 .logo {
-  position: relative;
-  width: 30w;  /* Adjusted size to make it smaller */
-  max-width: 300px;  /* Cap size to prevent it from being too large */
+  width: 20vw;
+  max-width: 200px;
   height: auto;
   margin-bottom: 1vh;
-  z-index: 2;  /* Ensure it sits above background elements */
+  z-index: 2;
 }
 
 .logo img {
@@ -48,46 +57,43 @@ body {
   display: block;
 }
 
+/* Scan Text (Titles) */
 .scan-text {
   font-family: 'TerminatorReal', 'Orbitron', 'Audiowide', sans-serif;
   color: #e74c3c;
   text-shadow: 0 0 5px rgba(255, 85, 85, 0.8), 0 0 15px rgba(255, 85, 85, 0.5);
   font-size: 1.8rem;
-  margin-bottom: 2vh;
+  margin-bottom: 1vh;
   text-transform: uppercase;
-  text-align: center;  /* Ensure text is centered */
+  text-align: right; /* Right-align text */
 }
 
-/* Player Greeting */
 h1.scan-text {
-  font-family: 'TerminatorReal', 'Orbitron', 'Audiowide', sans-serif;
-  color: #e74c3c;  /* Terminator red */
-  text-shadow: 0 0 5px #ff0000;
-  font-size: 2.5rem;  /* Larger font size for prominence */
-  margin-bottom: 2vh;  /* Space below the message */
-  text-transform: uppercase;
-  text-align: center;  /* Center the text */
-  letter-spacing: 0.1em;  /* Slightly spaced out letters for a techy look */
+  font-size: 2.5rem;
+  margin-bottom: 1vh;
+  letter-spacing: 0.1em;
+  z-index: 5;
+}
+
+h2.scan-text, h3.scan-text {
+  margin-bottom: 1vh;
   z-index: 5;
 }
 
 h2.scan-text {
   font-size: 1.5rem;
-  margin-bottom: 1vh;
-  color: #37ddfa;  /* Terminator red */
+  color: #37ddfa;
   text-shadow: 0 0 5px #00ddff;
-  z-index: 5;
 }
 
 h3.scan-text {
   font-size: 1rem;
-  margin-bottom: 1vh;
-  color: #3ccde7;  /* Terminator red */
+  color: #3ccde7;
   text-shadow: 0 0 5px #00ddff;
-  z-index: 5;
 }
 
-/* Scanline effect for added immersion */
+
+/* Scanline Effect */
 .scanlines {
   position: absolute;
   top: 0;
@@ -97,8 +103,8 @@ h3.scan-text {
   pointer-events: none;
   background: repeating-linear-gradient(
     0deg,
-    rgba(255, 0, 0, 0.05) 0,
-    rgba(255, 0, 0, 0.05) 2px,
+    rgba(0, 225, 255, 0.05) 0,
+    rgba(0, 153, 255, 0.05) 2px,
     transparent 3px,
     transparent 3px
   );
@@ -106,72 +112,212 @@ h3.scan-text {
   opacity: 1;
 }
 
-/* Assembly Code Feed Left Column */
-.assembly-feed-left {
+/* Console Styling */
+#console {
   position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%); /* Center horizontally */
+  width: 60%; /* Adjust width to fit within the layout */
+  height: 150px;
+  background-color: rgba(0, 0, 0, 0.8);
+  padding: 10px;
+  font-family: 'Courier New', monospace;
+  color: #00ff00;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.8); /* Glowing white effect */
+  overflow: hidden;
+  z-index: 10; /* Make sure it’s above other elements */
+  opacity: 0.8;
+}
+
+#cursor {
+  font-weight: bold;
+  color: #00ff00;
+  animation: blink 1s infinite;
+}
+
+/* Bracket Container */
+.bracket-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 900px; /* Increased size */
+  height: 600px; /* Increased height */
+  transform: translate(-50%, -50%) rotate(0deg); /* Centered */
+  border: 2px solid #fff; /* Optional: Visible brackets */
+  border-radius: 10px; /* Optional: Rounded bracket */
+  overflow: hidden; /* Ensure the map stays within the bracket */
+  z-index: 2;
+}
+
+/* Map Image */
+.map-image {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%; /* Adjust size to fit within the bracket */
+  height: auto;
+  transform: translate(-50%, -50%) scale(0.5) rotate(180deg); /* Start rotated and small */
+  transition: transform 4s ease-out, opacity 4s ease-in-out; /* Rotate, zoom, and opacity change */
+  opacity: 0; /* Start invisible for holographic fade-in */
+  will-change: transform, opacity;
+}
+
+/* Scanlines (overlay on top of the map for the holo effect) */
+.holo-scanlines {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(90, 0, 0, 0.171) 0,
+    rgba(146, 0, 0, 0.212) 2px,
+    transparent 5px,
+    transparent 5px
+  );
+  z-index: 3; /* Ensure it’s above the map but below the main UI */
+  opacity: 1; /* Subtle scanlines for the hologram look */
+  animation: scanline-animation 2s linear infinite; /* Smooth moving scanlines */
+}
+
+/* Scanline animation to move lines up and down */
+@keyframes scanline-animation {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 0 100%;
+  }
+}
+
+/* Assembly Feed Containers */
+.assembly-feed-container-left, .assembly-feed-container-right {
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent background */
+  border: 1px solid #ffffff; /* White border for the container */
+  overflow: hidden; /* Ensure content doesn't overflow */
+  z-index: 1; /* Place above the background but below important elements */
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.5); /* Subtle glow */
+}
+
+/* Positioning for the Left Container */
+.assembly-feed-container-left {
   top: 10px;
   left: 10px;
+  max-height: calc(100vh - 200px);
+  max-width: 350px
+}
+
+/* Positioning for the Right Container */
+.assembly-feed-container-right {
+  top: 30%;
+  right: 10px;
+}
+
+/* Scanlines Effect for Containers */
+.assembly-feed-container-left::before, .assembly-feed-container-right::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(255, 255, 255, 0.05) 0,
+    rgba(255, 255, 255, 0.05) 2px,
+    transparent 3px,
+    transparent 3px
+  );
+  z-index: 2; /* Ensure scanlines are above the background but below text */
+  opacity: 0.3; /* Subtle scanlines */
+  animation: scanline-animation 2s linear infinite; /* Moving scanlines */
+}
+
+/* Assembly Code Feed Left Column */
+.assembly-feed-left {
+  position: relative; /* Position inside container */
   font-family: 'Courier New', monospace;
   font-size: 12px;
   line-height: 16px;
   color: #ffffff;
-  text-shadow: 0 0 5px rgba(255, 255, 255, 0.8);  /* Glowing white effect */
-  z-index: 0; /* Lower to push behind elements */
-  opacity: 0.6;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.8); /* Glowing white effect */
+  z-index: 3; /* Ensure it's above the scanlines */
+  opacity: 0.8; /* Adjust opacity for better readability */
+  padding: 10px;
+  overflow-y: auto; /* Allow scrolling if content overflows */
 }
 
 /* Assembly Code Feed Right Column */
 .assembly-feed-right {
-  position: absolute;
-  top: 30%;
-  right: 10px;
+  position: relative; /* Position inside container */
   font-family: 'Courier New', monospace;
   font-size: 12px;
   line-height: 16px;
   color: #ffffff;
-  text-shadow: 0 0 5px rgba(255, 255, 255, 0.8);  /* Glowing white effect */
-  z-index: 0; /* Lower z-index to push this behind other elements */
-  opacity: 0.6; /* Optional: Adjust transparency */
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.8); /* Glowing white effect */
+  z-index: 3; /* Ensure it's above the scanlines */
+  opacity: 0.8; /* Adjust opacity for better readability */
+  padding: 10px;
+  overflow-y: auto; /* Allow scrolling if content overflows */
 }
 
-  /* Styling for the console text and cursor */
-  #console {
-    font-family: 'Courier New', monospace;
-    font-size: 16px;
-    color: #00ff00; /* Classic green terminal color */
-    background-color: #000000; /* Black background */
-    padding: 20px;
-    width: 600px;
-    margin: 50px auto;
-    border: 1px solid #00ff00;
-    z-index: 2;
-  }
-  
-  #cursor {
-    font-weight: bold;
-    color: #00ff00;
-    animation: blink 1s infinite;
-  }
-  
-  /* Blinking cursor animation */
-  @keyframes blink {
-    0% { opacity: 1; }
-    50% { opacity: 0; }
-    100% { opacity: 1; }
-  }
-  
-  /* Keyframes for Pan and Zoom Animation */
-@keyframes panZoomEffect {
+/* Scanline animation to move lines up and down */
+@keyframes scanline-animation {
   0% {
-    background-position: 0% 25%; /* Start at the left */
-    background-size: 140%; /* Initial zoom level */
-  }
-  50% {
-    background-position: 100% 25%; /* Pan to the right */
-    background-size: 160%; /* Zoom in slightly */
+    background-position: 0 0;
   }
   100% {
-    background-position: 0% 50%; /* Pan back to the left */
-    background-size: 140%; /* Zoom out slightly */
+    background-position: 0 100%;
+  }
+}
+
+
+/* Music Play Button */
+#play-music {
+  position: absolute;
+  bottom: 180px; /* Adjusted to be above the console */
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  padding: 10px 20px;
+  background-color: #ff0000;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  font-family: 'Orbitron', sans-serif; /* Sci-fi font */
+  text-transform: uppercase;
+  transition: background-color 0.3s ease;
+  opacity: 0.5;
+}
+
+#play-music:hover {
+  background-color: #ff5555; /* Lighter red on hover */
+}
+
+/* Blinking cursor animation */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* Keyframes for Pan and Zoom Animation */
+@keyframes panZoomEffect {
+  0% {
+    background-position: 0% 25%;
+    background-size: 140%;
+  }
+  50% {
+    background-position: 100% 25%;
+    background-size: 160%;
+  }
+  100% {
+    background-position: 0% 50%;
+    background-size: 140%;
   }
 }
