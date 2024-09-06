@@ -1,20 +1,45 @@
 document.addEventListener('DOMContentLoaded', function () {
-  // Music button event
-  const bgMusic = document.getElementById('bg-music');
-  const playButton = document.getElementById('play-music');
-  
-  playButton.addEventListener('click', function() {
-    if (bgMusic.paused) {
-      bgMusic.play();
-      playButton.innerText = 'Stop Music';
+  const music = document.getElementById('background-music');
+  const playMusicButton = document.getElementById('play-music');
+
+  // GMod Hook: Autoplay music if GMod is the environment (assumed that GMod won't block autoplay)
+  function autoPlayMusic() {
+    music.volume = 0.5; // Set volume
+    music.play()
+      .then(() => {
+        console.log("Music is playing automatically!");
+        playMusicButton.style.display = "none"; // Hide the button when autoplay works
+      })
+      .catch((error) => {
+        console.error("Autoplay failed, falling back to click to play", error);
+        playMusicButton.style.display = "block"; // Show the button if autoplay fails
+      });
+  }
+
+  // Try to autoplay music
+  autoPlayMusic();
+
+  // Fallback for browsers: Click to start music
+  playMusicButton.addEventListener('click', function () {
+    if (music.paused) {
+      music.play();
+      playMusicButton.innerText = "Click to Stop Music";
     } else {
-      bgMusic.pause();
-      playButton.innerText = 'Click to Start Music';
+      music.pause();
+      playMusicButton.innerText = "Click to Start Music";
     }
   });
+
+  // Optionally, hook into GMod's SetStatusChanged for environment-specific triggers (like player names)
+  window.SetStatusChanged = function (status) {
+    if (status.includes("Player")) {
+      const playerName = status.split(" ")[1]; // Extract player name
+      document.getElementById('playerName').innerText = `Welcome to the Future War, ${playerName}`;
+    }
+  };
 });
 
- /* --- T2 style scrolling text --*/
+/* --- T2 style scrolling text --*/
 document.addEventListener('DOMContentLoaded', function () {
 
   function getRandomAssemblyLine() {
@@ -150,3 +175,44 @@ document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('playerName').innerText = `Welcome to the Future War, ${playerName}`;
   }, 3000); // Simulated 3-second delay for local testing
 });
+
+  /* Cursortyper */
+  document.addEventListener('DOMContentLoaded', function () {
+    const consoleText = document.getElementById('console-text');
+    const cursor = document.getElementById('cursor');
+    
+    let arrayIndex = 0; // Index to track which string we're typing
+    let charIndex = 0; // Index to track the current character being typed
+    let typingSpeed = 75; // Speed of typing (in ms)
+    let wipingSpeed = 15; // Speed of wiping (in ms)
+    let pauseAfterTyping = 5000; // Pause before wiping and typing next line
+    
+    function typeText() {
+      if (charIndex < rumors[arrayIndex].length) {
+        // Type the next character
+        consoleText.textContent += rumors[arrayIndex][charIndex];
+        charIndex++;
+        setTimeout(typeText, typingSpeed); // Continue typing
+      } else {
+        // Pause before wiping the text
+        setTimeout(wipeText, pauseAfterTyping);
+      }
+    }
+  
+    function wipeText() {
+      if (charIndex > 0) {
+        // Wipe the last character
+        consoleText.textContent = consoleText.textContent.slice(0, -1);
+        charIndex--;
+        setTimeout(wipeText, wipingSpeed); // Continue wiping
+      } else {
+        // After wiping, move to the next string in the array
+        arrayIndex = (arrayIndex + 1) % rumors.length; // Loop back to start if at end
+        setTimeout(typeText, typingSpeed); // Start typing the next line
+      }
+    }
+  
+    // Start the typing effect initially
+    typeText();
+  });
+  

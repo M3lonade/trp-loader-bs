@@ -8,6 +8,7 @@ body {
   height: 100vh;
   margin: 0;
   overflow: hidden; /* Ensure no scrolling if elements overflow */
+  opacity: 0.8;
 }
 
 /* Keyframes for Pan and Zoom Animation */
@@ -72,59 +73,6 @@ h2.scan-text {
   text-shadow: 0 0 5px #ff0000;
 }
 
-/* Glitch Effect for Server Status */
-.glitch-text {
-  font-size: 1.2rem;
-  font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  margin-bottom: 20px;
-  color: #3498db;  /* Skynet blue */
-  text-shadow: 0 0 5px #3498db;
-  animation: glitchEffect 1.5s infinite;
-}
-/* Flickering and Glitching Effects */
-@keyframes flicker {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.7; }
-}
-
-@keyframes glitch {
-  0% {
-    text-shadow: 0 0 10px rgba(255, 85, 85, 0.8), 0 0 20px rgba(255, 85, 85, 0.8);
-  }
-  50% {
-    text-shadow: 0 0 20px rgba(255, 85, 85, 1), 0 0 40px rgba(255, 85, 85, 1);
-  }
-  100% {
-    text-shadow: 0 0 10px rgba(255, 85, 85, 0.8), 0 0 20px rgba(255, 85, 85, 0.8);
-  }
-}
-
-.hud-feed, .assembly-feed {
-  animation: flicker 2s infinite, glitch 1.5s infinite;
-}
-
-/* Glitch Text Animation */
-@keyframes glitchEffect {
-  0% { text-shadow: 2px 2px #f00, -2px -2px #0f0; }
-  50% { text-shadow: -2px 2px #0f0, 2px -2px #f00; }
-  100% { text-shadow: 2px 2px #0f0, -2px -2px #f00; }
-}
-
-/* Music button styling */
-#play-music {
-  background-color: #ff0000;
-  border: 2px solid #ff0000;
-  color: white;
-  font-size: 1rem;
-  margin-top: 20px;
-  transition: background-color 0.3s, color 0.3s;
-}
-
-#play-music:hover {
-  background-color: white;
-  color: #ff0000;
-}
-
 /* Scanline effect for added immersion */
 .scanlines {
   position: absolute;
@@ -184,7 +132,7 @@ h2.scan-text {
   color: #ffffff;
   text-shadow: 0 0 5px rgba(255, 255, 255, 0.8);  /* Glowing white effect */
   z-index: -1; /* Lower to push behind elements */
-  opacity: 0.6;
+  opacity: 1;
 }
 
 /* Assembly Code Feed Right Column */
@@ -198,5 +146,31 @@ h2.scan-text {
   color: #ffffff;
   text-shadow: 0 0 5px rgba(255, 255, 255, 0.8);  /* Glowing white effect */
   z-index: -1; /* Lower z-index to push this behind other elements */
-  opacity: 0.6; /* Optional: Adjust transparency */
+  opacity: 1; /* Optional: Adjust transparency */
 }
+
+  /* Styling for the console text and cursor */
+  #console {
+    font-family: 'Courier New', monospace;
+    font-size: 18px;
+    color: #00ff00; /* Classic green terminal color */
+    background-color: #000000; /* Black background */
+    padding: 20px;
+    width: 800px;
+    margin: 50px auto;
+    border: 1px solid #00ff00;
+  }
+  
+  #cursor {
+    font-weight: bold;
+    color: #00ff00;
+    animation: blink 1s infinite;
+  }
+  
+  /* Blinking cursor animation */
+  @keyframes blink {
+    0% { opacity: 1; }
+    50% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+  
