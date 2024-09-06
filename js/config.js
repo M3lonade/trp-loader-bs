@@ -2,6 +2,8 @@
 
 var Config = {};
 
+const playerName = "Retard"
+
 const rumors = [
     "Judgment Day: August 29, 1997. Skynet becomes self-aware.",
     "'Was talking to my brother over the radio the other day. He said his boys saw a battleship floating in the air. It passed by them on it's way east. The guy's gone nuts, I'm telling ya.'",
@@ -9,12 +11,61 @@ const rumors = [
     "'Bots took my children and killed my wife. If it were up to me, everyone should join the Resistance.' - John Doe",
     "'There's a large Skynet presence amassed along the southern Cali border with Tijuana and Mexicali, skirmishes breaking out almost daily at this point with the local militias, seems like the net are attempting to push south past the border into Mexico.' - Medusa",
     "'You need not repent my brothers and sisters. For you are already saved! We stand against him, and his metal Sinners in each day we live, our flesh is testament to our divinity. He must clad his Sinners in metal to shackle them to this world, but we will free them by the scourging of holy gunpowder!' - A Preacher",
-    "'---ollowing announcements, courtesy of the Washington State National Guard. Avoid Clallam County, Influenza A outbreak, not enough medical stations to treat illness... Emergency food and water distribution centers will be open again Thursday, and will remain open until stock is exhausted. Water rationing, and water-boil advisory still in effect for Clallam County, Jefferson County, Kitsap Coun---'"
+    "'---ollowing announcements, courtesy of the Washington State National Guard. Avoid Clallam County, Influenza A outbreak, not enough medical stations to treat illness---",
+    "'Emergency food and water distribution centers will be open again Thursday, and will remain open until stock is exhausted. Water rationing, and water-boil advisory still in effect for Clallam County, Jefferson County, Kitsap Coun---'"
  ];
 
-const instructions = ["LDA", "STA", "LDX", "STX", "JSR", "CMP", "BNE", "SEC", "RTS"];
-const registers = ["#$00", "#$FF", "$2000", "$2001", "$FFD2", "$2002", "$FFA0", "$F000", "$FFFE"];
-const addresses = ["60A0", "60A1", "60A2", "60A3", "60A4", "60A5", "60A6", "60A7", "60A8"];
+
+const registers = [
+  '0x0040A1FC', '0x00AB12FF', '0x0010F9E1', '0x000AFEDC', '0x00BB78A3', 
+  '0x00458FF2', '0x003B90C1', '0x002ACDED', '0x00FCD8F3', '0x00139FE7',
+  '0x0021AB10', '0x003F98AB', '0x0044CB11', '0x00D2FA90', '0x00AB762E', 
+  '0x00545FA2', '0x00634DF7', '0x0078FEAB', '0x008B1EF3', '0x00CDEA21',
+  '0x0029B4DC', '0x0033DF81', '0x00EFA123', '0x000FFCED', '0x004321A7',
+  '0x005FA9B1', '0x007CB820', '0x0098DE45', '0x00B9A1C7', '0x00D4EC82',
+  '0x00A1F0EE', '0x00B5AC7F', '0x0065BB89', '0x00CDEF12', '0x0023AB89'
+];
+
+const instructions = [
+  'MOVL', 'ADDL', 'SUBL', 'CMPL', 'JMPF', 
+  '#OPF', 'PUSH', '$OPF', 'CALL', 'RETN',
+  'ANDL', '$RLN', 'XORL', 'MULF', 'DIVL',
+  'NEGF', 'SHLL', 'SHRL', 'ROFL', 'RORL',
+  '#KEK', 'TEST', 'INCF', '#ECL', '$NZL',
+  'JZLL', '$NEQ', 'JEQL', 'JSTS', 'JNSF',
+  'SARL', 'IMUL', '$DIV', 'ADCL', 'SBBL'
+];
+
+const addresses = [
+  'EAXL', 'EBXL', 'ECXL', 'EDXL', 'ESPX', 
+  'EBPX', 'ESIX', 'EDIX', 'RAXL', 'RBXL',
+  'RCXL', 'RDXL', 'RSIX', 'RSPX', 'RBPX',
+  'CR00', 'CR02', 'CR03', 'CR04', 'DR00',
+  'DR01', 'DR02', 'DR03', 'DR04', 'R08X',
+  'R09X', 'R10X', 'R11X', 'R12X', 'R13X',
+  'R14X', 'R15X', 'SSPX', 'DSBX', 'FSIX'
+];
+
+
+const assemblyLines = [
+  "LDA #$01          ; Load the value 01 into accumulator",
+  "STA $2000         ; Store accumulator at memory address 2000",
+  "LDX #$FF          ; Load the value FF into X register",
+  "STX $2001         ; Store X register at memory address 2001",
+  "JSR $FFA2         ; Jump to subroutine at memory address FFA2",
+  "CMP #$00          ; Compare accumulator with value 00",
+  "BNE $F000         ; Branch if not equal to memory address F000",
+  "SEC               ; Set carry flag",
+  "RTS               ; Return from subroutine",
+  "LDA $60A0         ; Load accumulator with value at memory address 60A0",
+  "STA $60A1         ; Store accumulator at memory address 60A1",
+  "LDY #$10          ; Load the value 10 into Y register",
+  "STY $60A2         ; Store Y register at memory address 60A2",
+  "CMP $60A3         ; Compare accumulator with memory address 60A3",
+  "BEQ $60A4         ; Branch if equal to memory address 60A4",
+  "CLC               ; Clear carry flag",
+  "JMP $60A5         ; Jump to memory address 60A5"
+];
 
 const predefinedBlocks = [
     {

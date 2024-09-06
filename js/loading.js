@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 });
 
-/* --- T2 style scrolling text --*/
+/*--- T2 style scrolling text --*/
 document.addEventListener('DOMContentLoaded', function () {
 
   function getRandomAssemblyLine() {
@@ -119,10 +119,7 @@ document.addEventListener('DOMContentLoaded', function () {
     lineElement.classList.add('assembly-line');
 
     // Randomly insert predefined code blocks with separators
-    if (Math.random() > 0.85) {
-      const block = predefinedBlocks[Math.floor(Math.random() * predefinedBlocks.length)];
-      rightLineNumber = insertPredefinedBlock('assembly-feed-right', block, rightLineNumber);
-    } else {
+  {
       lineElement.innerHTML = `<span>${rightLineNumber}</span> <span>${lineData.address}</span> <span>${lineData.instruction}</span>`;
       feed.appendChild(lineElement);
       rightLineNumber++;
@@ -144,59 +141,31 @@ document.addEventListener('DOMContentLoaded', function () {
   addRightAssemblyLine();
 });
 
-/*--Welcome Message--*/
-// This part is simulated for local testing
-document.addEventListener('DOMContentLoaded', function () {
-  let playerName = "Survivor"; // Default name for local testing
-  let playerNameReceived = false; // Flag to check if player name has been received
-
-  // GMod Hook: SetStatusChanged function to get player name
-  window.SetStatusChanged = function (status) {
-    if (status.includes("Player")) {
-      playerName = status.split(" ")[1]; // Extract player name from GMod status
-      playerNameReceived = true; // Player name received successfully
-      updatePlayerName(); // Call function to update the player name in DOM
-    }
-  };
-
-  // Function to update player name in DOM
-  function updatePlayerName() {
-    playerNameElement.innerText = `Welcome to the Future War, ${playerName}`;
-  }
-
-  // Polling function to keep checking for the player name until received
-  function checkPlayerName() {
-    if (!playerNameReceived) {
-      setTimeout(checkPlayerName, 500); // Retry every 500ms
-    } else {
-      updatePlayerName(); // Once received, update the player name
-    }
-  }
-
-    // Start checking for the player name (in case it's delayed)
-    checkPlayerName();
-
-  // Fallback for local testing if GMod hook is not called
-  setTimeout(() => {
-    document.getElementById('playerName').innerText = `Welcome to the Future War, ${playerName}`;
-  }, 8000); // Simulated 3-second delay for local testing
-});
-
   /* Cursortyper */
   document.addEventListener('DOMContentLoaded', function () {
     const consoleText = document.getElementById('console-text');
     const cursor = document.getElementById('cursor');
-    
-    let arrayIndex = 0; // Index to track which string we're typing
+  
     let charIndex = 0; // Index to track the current character being typed
     let typingSpeed = 75; // Speed of typing (in ms)
     let wipingSpeed = 15; // Speed of wiping (in ms)
-    let pauseAfterTyping = 5000; // Pause before wiping and typing next line
-    
+    let pauseAfterTyping = 5000; // Pause before wiping and typing the next line
+    let shuffledRumors = shuffleArray([...rumors]); // Shuffle the array initially
+    let arrayIndex = 0; // Index for the shuffled array
+  
+    // Function to shuffle the array (Fisher-Yates Shuffle Algorithm)
+    function shuffleArray(array) {
+      for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]]; // Swap elements
+      }
+      return array;
+    }
+  
     function typeText() {
-      if (charIndex < rumors[arrayIndex].length) {
+      if (charIndex < shuffledRumors[arrayIndex].length) {
         // Type the next character
-        consoleText.textContent += rumors[arrayIndex][charIndex];
+        consoleText.textContent += shuffledRumors[arrayIndex][charIndex];
         charIndex++;
         setTimeout(typeText, typingSpeed); // Continue typing
       } else {
@@ -212,8 +181,13 @@ document.addEventListener('DOMContentLoaded', function () {
         charIndex--;
         setTimeout(wipeText, wipingSpeed); // Continue wiping
       } else {
-        // After wiping, move to the next string in the array
-        arrayIndex = (arrayIndex + 1) % rumors.length; // Loop back to start if at end
+        // After wiping, move to the next string in the shuffled array
+        arrayIndex++;
+        if (arrayIndex >= shuffledRumors.length) {
+          // Reshuffle the array if all items have been typed
+          shuffledRumors = shuffleArray([...rumors]);
+          arrayIndex = 0;
+        }
         setTimeout(typeText, typingSpeed); // Start typing the next line
       }
     }
@@ -221,3 +195,4 @@ document.addEventListener('DOMContentLoaded', function () {
     // Start the typing effect initially
     typeText();
   });
+  

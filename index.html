@@ -1,44 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>TRP Loading Screen</title>
+  
   <!-- Bootstrap CSS (from CDN) -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-  <link rel="stylesheet" href="css/style.css"> <!-- Custom styles -->
+  
+  <!-- Custom styles -->
+  <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
-  <div class="container">
+  <!-- Loading Wrapper: centers content on the page -->
   <div id="loading-wrapper">
+
+    <!-- Logo -->
     <div class="logo">
       <img src="img/logo.png" alt="TechCom Logo">
     </div>
-    </div>
-    <!-- Player Greeting -->
-    <h2 id="playerName" class="scan-text"></h2>
-    
-    <!-- Optional Audio -->
-    <audio id="background-music" src="audio/futurewarambiance.mp3" loop></audio>
-    <button id="play-music" class="btn mt-4">Click to Start Music</button>
-  </div>
 
-    <!-- Assembly Code Left Column -->
+    <!-- Static Welcome Message -->
+    <h1 class="scan-text">The Future War</h1>
+
+    <!-- Player Greeting (will be filled dynamically) -->
+    <h2 class="scan-text">Olympia, Washington</h2>
+
+    <!-- Assembly Code Feeds for left and right columns -->
     <div class="assembly-feed-left" id="assembly-feed-left"></div>
-    <div class="assembly-feed-right" id="assembly-feed-right"></div> 
-    
-    <div class="scanlines"></div>
+    <div class="assembly-feed-right" id="assembly-feed-right"></div>
 
+    <!-- Console Element (for terminal-style text) -->
     <div id="console">
-      <span id="console-text"></span><span id="cursor">|</span>
+      <span id="console-text">> </span><span id="cursor">|</span>
     </div>
 
-  </div>
+    <!-- Music Button and Audio Element -->
+    <button id="play-music" class="btn btn-danger">Start Music (browser-override)</button>
+    <audio id="background-music" src="audio/futurewarambiance.mp3" loop></audio>
+
+    <!-- Scanlines effect -->
+    <div class="scanlines"></div>
+    
+  </div> <!-- End of loading-wrapper -->
 
   <!-- Bootstrap JS and Custom JS -->
   <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-  <script src="js/config.js"></script> <!-- Config Values-->
+
+  <!-- Custom Scripts -->
+  <script src="js/config.js"></script> <!-- Config Values -->
   <script src="js/loading.js"></script> <!-- Custom JavaScript -->
 </body>
+
 </html>

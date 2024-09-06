@@ -8,33 +8,7 @@ body {
   height: 100vh;
   margin: 0;
   overflow: hidden; /* Ensure no scrolling if elements overflow */
-  opacity: 0.8;
-}
-
-/* Keyframes for Pan and Zoom Animation */
-@keyframes panZoomEffect {
-  0% {
-    background-position: 0% 25%; /* Start at the left */
-    background-size: 140%; /* Initial zoom level */
-  }
-  50% {
-    background-position: 100% 25%; /* Pan to the right */
-    background-size: 160%; /* Zoom in slightly */
-  }
-  100% {
-    background-position: 0% 50%; /* Pan back to the left */
-    background-size: 140%; /* Zoom out slightly */
-  }
-}
-
-/* Loading Wrapper */
-#loading-wrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
-  position: relative;
+  opacity: 0.9;
 }
 
 /* Import the Terminator Real NFI font */
@@ -45,18 +19,27 @@ body {
   font-style: normal;
 }
 
-/* Apply the Terminator font to specific elements */
-.scan-text {
-  font-family: 'TerminatorReal', sans-serif;  /* Fallback to sans-serif in case font doesn't load */
-  color: #ff5555;  /* Terminator red */
-  text-shadow: 0 0 5px rgba(255, 85, 85, 0.8);  /* Optional glowing red shadow */
-} 
+/* Loading Wrapper */
+#loading-wrapper {
+  display: flex;
+  flex-direction: column;  /* Align items in a column */
+  justify-content: center;  /* Vertically center */
+  align-items: center;      /* Horizontally center */
+  height: 100vh;            /* Full-screen height */
+  background-color: rgba(0, 0, 0, 0.8); /* Background contrast */
+  padding: 0 2vw;           /* Adjust padding for smaller screens */
+  position: relative;
+  z-index: 2;               /* Ensure it's above background elements */
+}
 
+/* Logo and text */
 .logo {
   position: relative;
-  width: 225px;
+  width: 20vw;  /* Adjusted size to make it smaller */
+  max-width: 200px;  /* Cap size to prevent it from being too large */
   height: auto;
-  overflow: hidden;
+  margin-bottom: 2vh;
+  z-index: 2;  /* Ensure it sits above background elements */
 }
 
 .logo img {
@@ -64,13 +47,35 @@ body {
   height: auto;
   display: block;
 }
-  
+
+.scan-text {
+  font-family: 'TerminatorReal', 'Orbitron', 'Audiowide', sans-serif;
+  color: #e74c3c;
+  text-shadow: 0 0 5px rgba(255, 85, 85, 0.8), 0 0 15px rgba(255, 85, 85, 0.5);
+  font-size: 1.8rem;
+  margin-bottom: 2vh;
+  text-transform: uppercase;
+  text-align: center;  /* Ensure text is centered */
+}
+
 /* Player Greeting */
+h1.scan-text {
+  font-family: 'TerminatorReal', 'Orbitron', 'Audiowide', sans-serif;
+  color: #e74c3c;  /* Terminator red */
+  text-shadow: 0 0 5px #ff0000;
+  font-size: 2.5rem;  /* Larger font size for prominence */
+  margin-bottom: 1vh;  /* Space below the message */
+  text-transform: uppercase;
+  text-align: center;  /* Center the text */
+  letter-spacing: 0.1em;  /* Slightly spaced out letters for a techy look */
+}
+
 h2.scan-text {
   font-size: 2rem;
   margin-bottom: 10px;
   color: #e74c3c;  /* Terminator red */
   text-shadow: 0 0 5px #ff0000;
+  z-index: 2;
 }
 
 /* Scanline effect for added immersion */
@@ -88,37 +93,8 @@ h2.scan-text {
     transparent 3px,
     transparent 3px
   );
-  z-index: 1;
-}
-
-/* Centering container */
-.container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 50%;
-  flex-direction: column;
-  text-align: center;
-  z-index: 2; /* Ensure content is above scanlines */
-}
-
-/* Fallback for smaller screen sizes */
-@media (max-width: 768px) {
-  body {
-    animation: panTiltMobile 60s ease-in-out infinite alternate;
-  }
-
-  @keyframes panTiltMobile {
-    0% {
-      transform: scale(1.03) translate(0, 0);
-    }
-    50% {
-      transform: scale(1.05) translate(10px, -10px);
-    }
-    100% {
-      transform: scale(1.07) translate(-10px, 10px);
-    }
-  }
+  z-index: 3;
+  opacity: 1;
 }
 
 /* Assembly Code Feed Left Column */
@@ -131,34 +107,35 @@ h2.scan-text {
   line-height: 16px;
   color: #ffffff;
   text-shadow: 0 0 5px rgba(255, 255, 255, 0.8);  /* Glowing white effect */
-  z-index: -1; /* Lower to push behind elements */
-  opacity: 1;
+  z-index: 0; /* Lower to push behind elements */
+  opacity: 0.6;
 }
 
 /* Assembly Code Feed Right Column */
 .assembly-feed-right {
   position: absolute;
-  top: 10px;
+  top: 30%;
   right: 10px;
   font-family: 'Courier New', monospace;
   font-size: 12px;
   line-height: 16px;
   color: #ffffff;
   text-shadow: 0 0 5px rgba(255, 255, 255, 0.8);  /* Glowing white effect */
-  z-index: -1; /* Lower z-index to push this behind other elements */
-  opacity: 1; /* Optional: Adjust transparency */
+  z-index: 0; /* Lower z-index to push this behind other elements */
+  opacity: 0.6; /* Optional: Adjust transparency */
 }
 
   /* Styling for the console text and cursor */
   #console {
     font-family: 'Courier New', monospace;
-    font-size: 18px;
+    font-size: 16px;
     color: #00ff00; /* Classic green terminal color */
     background-color: #000000; /* Black background */
     padding: 20px;
-    width: 800px;
+    width: 600px;
     margin: 50px auto;
     border: 1px solid #00ff00;
+    z-index: 2;
   }
   
   #cursor {
@@ -174,3 +151,18 @@ h2.scan-text {
     100% { opacity: 1; }
   }
   
+  /* Keyframes for Pan and Zoom Animation */
+@keyframes panZoomEffect {
+  0% {
+    background-position: 0% 25%; /* Start at the left */
+    background-size: 140%; /* Initial zoom level */
+  }
+  50% {
+    background-position: 100% 25%; /* Pan to the right */
+    background-size: 160%; /* Zoom in slightly */
+  }
+  100% {
+    background-position: 0% 50%; /* Pan back to the left */
+    background-size: 140%; /* Zoom out slightly */
+  }
+}
