@@ -30,15 +30,6 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   });
 
-  // Optionally, hook into GMod's SetStatusChanged for environment-specific triggers (like player names)
-  window.SetStatusChanged = function (status) {
-    if (status.includes("Player")) {
-      const playerName = status.split(" ")[1]; // Extract player name
-      document.getElementById('playerName').innerText = `Welcome to the Future War, ${playerName}`;
-    }
-  };
-});
-
 /* --- T2 style scrolling text --*/
 document.addEventListener('DOMContentLoaded', function () {
 
@@ -157,18 +148,34 @@ document.addEventListener('DOMContentLoaded', function () {
 /*--Welcome Message--*/
 // This part is simulated for local testing
 document.addEventListener('DOMContentLoaded', function () {
-  // Simulate GMod hook call for player name
-  let playerName = "Survivor";  // Default player name for local testing
+  let playerName = "Survivor"; // Default name for local testing
+  let playerNameReceived = false; // Flag to check if player name has been received
 
-  // In GMod, this will be set by the game hook
+  // GMod Hook: SetStatusChanged function to get player name
   window.SetStatusChanged = function (status) {
     if (status.includes("Player")) {
-      playerName = status.split(" ")[1]; // Extract player name from status message
+      playerName = status.split(" ")[1]; // Extract player name from GMod status
+      playerNameReceived = true; // Player name received successfully
+      updatePlayerName(); // Call function to update the player name in DOM
     }
-
-    // Update the player name in the DOM
-    document.getElementById('playerName').innerText = `Welcome to the Future War, ${playerName}`;
   };
+
+  // Function to update player name in DOM
+  function updatePlayerName() {
+    playerNameElement.innerText = `Welcome to the Future War, ${playerName}`;
+  }
+
+  // Polling function to keep checking for the player name until received
+  function checkPlayerName() {
+    if (!playerNameReceived) {
+      setTimeout(checkPlayerName, 500); // Retry every 500ms
+    } else {
+      updatePlayerName(); // Once received, update the player name
+    }
+  }
+
+    // Start checking for the player name (in case it's delayed)
+  checkPlayerName();
 
   // Fallback for local testing if GMod hook is not called
   setTimeout(() => {
