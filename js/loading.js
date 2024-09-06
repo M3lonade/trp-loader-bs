@@ -173,7 +173,7 @@ document.addEventListener('DOMContentLoaded', function () {
   // Fallback for local testing if GMod hook is not called
   setTimeout(() => {
     document.getElementById('playerName').innerText = `Welcome to the Future War, ${playerName}`;
-  }, 3000); // Simulated 3-second delay for local testing
+  }, 8000); // Simulated 3-second delay for local testing
 });
 
   /* Cursortyper */
