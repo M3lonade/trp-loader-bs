@@ -12,7 +12,10 @@ const rumors = [
     "'There's a large Skynet presence amassed along the southern Cali border with Tijuana and Mexicali, skirmishes breaking out almost daily at this point with the local militias, seems like the net are attempting to push south past the border into Mexico.' - Medusa",
     "'You need not repent my brothers and sisters. For you are already saved! We stand against him, and his metal Sinners in each day we live, our flesh is testament to our divinity. He must clad his Sinners in metal to shackle them to this world, but we will free them by the scourging of holy gunpowder!' - A Preacher",
     "'---ollowing announcements, courtesy of the Washington State National Guard. Avoid Clallam County, Influenza A outbreak, not enough medical stations to treat illness---",
-    "'Emergency food and water distribution centers will be open again Thursday, and will remain open until stock is exhausted. Water rationing, and water-boil advisory still in effect for Clallam County, Jefferson County, Kitsap Coun---'"
+    "'Emergency food and water distribution centers will be open again Thursday, and will remain open until stock is exhausted. Water rationing, and water-boil advisory still in effect for Clallam County, Jefferson County, Kitsap Coun---'",
+    "'Pay attention if you’re out in cities; seen some hobo code spray painted on walls that’s pretty recent. Get Kelly to give you a quick lesson on it, those symbols could save you from a ‘bot if you’ve got a good eye.' - K. Davis",
+    "There is a man named Shoes who never sleeps. He walks and talks like a robot. I've seen him drinking motor oil and some tell me he breathes diesel exhaust. Last night I swear I could see his eyes glowing like cosmic pearls beneath the old moon. His name is Shoes and he never sleeps.' - Stranger",
+    "'DON'T GO ANYWHERE NEAR COVILLE NATIONAL PARK!'"
  ];
 
 
