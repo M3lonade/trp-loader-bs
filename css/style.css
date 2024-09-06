@@ -38,7 +38,7 @@ body {
   width: 30w;  /* Adjusted size to make it smaller */
   max-width: 300px;  /* Cap size to prevent it from being too large */
   height: auto;
-  margin-bottom: 2vh;
+  margin-bottom: 1vh;
   z-index: 2;  /* Ensure it sits above background elements */
 }
 
@@ -68,14 +68,23 @@ h1.scan-text {
   text-transform: uppercase;
   text-align: center;  /* Center the text */
   letter-spacing: 0.1em;  /* Slightly spaced out letters for a techy look */
+  z-index: 5;
 }
 
 h2.scan-text {
-  font-size: 2rem;
-  margin-bottom: 10px;
-  color: #e74c3c;  /* Terminator red */
-  text-shadow: 0 0 5px #ff0000;
-  z-index: 2;
+  font-size: 1.5rem;
+  margin-bottom: 1vh;
+  color: #37ddfa;  /* Terminator red */
+  text-shadow: 0 0 5px #00ddff;
+  z-index: 5;
+}
+
+h3.scan-text {
+  font-size: 1rem;
+  margin-bottom: 1vh;
+  color: #3ccde7;  /* Terminator red */
+  text-shadow: 0 0 5px #00ddff;
+  z-index: 5;
 }
 
 /* Scanline effect for added immersion */

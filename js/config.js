@@ -2,8 +2,6 @@
 
 var Config = {};
 
-const playerName = "Retard"
-
 const rumors = [
     "Judgment Day: August 29, 1997. Skynet becomes self-aware.",
     "'Was talking to my brother over the radio the other day. He said his boys saw a battleship floating in the air. It passed by them on it's way east. The guy's gone nuts, I'm telling ya.'",
