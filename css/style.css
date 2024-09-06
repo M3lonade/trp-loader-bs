@@ -1,60 +1,202 @@
-/* Background and overall page styling */
+/* Background styling for body */
 body {
-    background: url('../img/background.jpg') no-repeat center center fixed;
-    background-size: cover;
-    color: #ff0000; /* Skynet red for the primary text */
-    font-family: 'Terminator', sans-serif; /* Custom Terminator font */
-    height: 100vh;
-    margin: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
+  background: url('../img/background.jpg') no-repeat center center fixed;
+  background-size: cover;
+  animation: panZoomEffect 60s ease-in-out infinite alternate; /* Pan and tilt effect */
+  color: #ff0000; /* Terminator red for text */
+  font-family: 'Courier New', Courier, monospace; /* Monospaced font for a more techy look */
+  height: 100vh;
+  margin: 0;
+  overflow: hidden; /* Ensure no scrolling if elements overflow */
+}
+
+/* Keyframes for Pan and Zoom Animation */
+@keyframes panZoomEffect {
+  0% {
+    background-position: 0% 25%; /* Start at the left */
+    background-size: 140%; /* Initial zoom level */
   }
-  
-  /* Skynet themed progress bar */
-  .progress-bar {
-    background-color: #ff0000; /* Skynet red */
-    font-weight: bold;
-    font-size: 1.2rem;
-    transition: width 0.5s ease; /* Smooth progress bar transitions */
+  50% {
+    background-position: 100% 25%; /* Pan to the right */
+    background-size: 160%; /* Zoom in slightly */
   }
-  
-  /* Status text styling */
-  #status-text {
-    color: #ff0000;
-    font-size: 1.5rem;
-    font-weight: bold;
-    text-transform: uppercase; /* Give it a strong Skynet look */
-    margin-top: 15px;
+  100% {
+    background-position: 0% 50%; /* Pan back to the left */
+    background-size: 140%; /* Zoom out slightly */
   }
+}
+
+/* Loading Wrapper */
+#loading-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  position: relative;
+}
+
+/* Import the Terminator Real NFI font */
+@font-face {
+  font-family: 'TerminatorReal';
+  src: url('../fonts/TerminatorRealNFI.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* Apply the Terminator font to specific elements */
+.scan-text {
+  font-family: 'TerminatorReal', sans-serif;  /* Fallback to sans-serif in case font doesn't load */
+  color: #ff5555;  /* Terminator red */
+  text-shadow: 0 0 5px rgba(255, 85, 85, 0.8);  /* Optional glowing red shadow */
+} 
+
+.logo {
+  position: relative;
+  width: 225px;
+  height: auto;
+  overflow: hidden;
+}
+
+.logo img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
   
-  /* Music button styling */
-  #play-music {
-    background-color: #ff0000;
-    border: 2px solid #ff0000;
-    color: white;
-    font-size: 1rem;
-    margin-top: 20px;
-    transition: background-color 0.3s, color 0.3s;
+/* Player Greeting */
+h2.scan-text {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  color: #e74c3c;  /* Terminator red */
+  text-shadow: 0 0 5px #ff0000;
+}
+
+/* Glitch Effect for Server Status */
+.glitch-text {
+  font-size: 1.2rem;
+  font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  margin-bottom: 20px;
+  color: #3498db;  /* Skynet blue */
+  text-shadow: 0 0 5px #3498db;
+  animation: glitchEffect 1.5s infinite;
+}
+/* Flickering and Glitching Effects */
+@keyframes flicker {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+@keyframes glitch {
+  0% {
+    text-shadow: 0 0 10px rgba(255, 85, 85, 0.8), 0 0 20px rgba(255, 85, 85, 0.8);
   }
-  
-  #play-music:hover {
-    background-color: white;
-    color: #ff0000;
+  50% {
+    text-shadow: 0 0 20px rgba(255, 85, 85, 1), 0 0 40px rgba(255, 85, 85, 1);
   }
-  
-  /* Centering elements vertically and horizontally */
-  .container {
-    max-width: 800px;
+  100% {
+    text-shadow: 0 0 10px rgba(255, 85, 85, 0.8), 0 0 20px rgba(255, 85, 85, 0.8);
   }
-  
-  /* Override Bootstrap text styling */
-  h1 {
-    font-size: 3rem;
-    font-weight: bold;
-    text-transform: uppercase;
-    color: #ff0000;
-    margin-bottom: 20px;
+}
+
+.hud-feed, .assembly-feed {
+  animation: flicker 2s infinite, glitch 1.5s infinite;
+}
+
+/* Glitch Text Animation */
+@keyframes glitchEffect {
+  0% { text-shadow: 2px 2px #f00, -2px -2px #0f0; }
+  50% { text-shadow: -2px 2px #0f0, 2px -2px #f00; }
+  100% { text-shadow: 2px 2px #0f0, -2px -2px #f00; }
+}
+
+/* Music button styling */
+#play-music {
+  background-color: #ff0000;
+  border: 2px solid #ff0000;
+  color: white;
+  font-size: 1rem;
+  margin-top: 20px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+#play-music:hover {
+  background-color: white;
+  color: #ff0000;
+}
+
+/* Scanline effect for added immersion */
+.scanlines {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(255, 0, 0, 0.05) 0,
+    rgba(255, 0, 0, 0.05) 2px,
+    transparent 3px,
+    transparent 3px
+  );
+  z-index: 1;
+}
+
+/* Centering container */
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50%;
+  flex-direction: column;
+  text-align: center;
+  z-index: 2; /* Ensure content is above scanlines */
+}
+
+/* Fallback for smaller screen sizes */
+@media (max-width: 768px) {
+  body {
+    animation: panTiltMobile 60s ease-in-out infinite alternate;
   }
-  
+
+  @keyframes panTiltMobile {
+    0% {
+      transform: scale(1.03) translate(0, 0);
+    }
+    50% {
+      transform: scale(1.05) translate(10px, -10px);
+    }
+    100% {
+      transform: scale(1.07) translate(-10px, 10px);
+    }
+  }
+}
+
+/* Assembly Code Feed Left Column */
+.assembly-feed-left {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  font-family: 'Courier New', monospace;
+  font-size: 14px;
+  line-height: 16px;
+  color: #ffffff;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.8);  /* Glowing white effect */
+  z-index: -1; /* Lower to push behind elements */
+  opacity: 0.6;
+}
+
+/* Assembly Code Feed Right Column */
+.assembly-feed-right {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-family: 'Courier New', monospace;
+  font-size: 14px;
+  line-height: 16px;
+  color: #ffffff;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.8);  /* Glowing white effect */
+  z-index: -1; /* Lower z-index to push this behind other elements */
+  opacity: 0.6; /* Optional: Adjust transparency */
+}

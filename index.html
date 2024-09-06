@@ -3,29 +3,45 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>GMod Skynet Loading Screen</title>
+  <title>TRP Loading Screen</title>
   <!-- Bootstrap CSS (from CDN) -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
   <link rel="stylesheet" href="css/style.css"> <!-- Custom styles -->
 </head>
 <body>
-  <div class="container text-center">
-    <h1>Skynet Systems Initializing...</h1>
-    
-    <div class="progress" style="height: 30px;">
-      <div id="progress-bar" class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">0%</div>
+  <div class="container">
+  <div id="loading-wrapper">
+    <div class="logo">
+      <img src="img/logo.png" alt="TechCom Logo">
     </div>
-
-    <p id="status-text" class="mt-3">Preparing resources...</p>
-
+    </div>
+    <!-- Player Greeting -->
+    <h2 id="playerName" class="scan-text">Initiating User Interface for: Player</h2>
+    <!-- Display Skynet Status -->
+    <p id="serverStatus" class="glitch-text">Connecting to Skynet Core...</p>
+    
     <!-- Optional Audio -->
-    <audio id="bg-music" src="audio/bg-music.mp3" loop></audio>
+    <audio id="bg-music" src="audio/futurewarambiance.mp3" loop></audio>
     <button id="play-music" class="btn mt-4">Click to Start Music</button>
+  </div>
+
+
+    <!-- Assembly Code Left Column -->
+    <div class="assembly-feed-left" id="assembly-feed-left">
+      <!-- Dynamically generated assembly lines will be added here -->
+    </div>
+    <div class="assembly-feed-right" id="assembly-feed-right">
+      </div> 
+
+    
+    <div class="scanlines"></div>
+
   </div>
 
   <!-- Bootstrap JS and Custom JS -->
   <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  <script src="js/config.js"></script>
   <script src="js/loading.js"></script> <!-- Custom JavaScript -->
 </body>
 </html>
