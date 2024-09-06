@@ -64,7 +64,7 @@ h1.scan-text {
   color: #e74c3c;  /* Terminator red */
   text-shadow: 0 0 5px #ff0000;
   font-size: 2.5rem;  /* Larger font size for prominence */
-  margin-bottom: 3vh;  /* Space below the message */
+  margin-bottom: 2vh;  /* Space below the message */
   text-transform: uppercase;
   text-align: center;  /* Center the text */
   letter-spacing: 0.1em;  /* Slightly spaced out letters for a techy look */
