@@ -3,7 +3,7 @@
 var Config = {};
 
 const rumors = [
-    "Judgment Day: August 29, 1997. Skynet becomes self-aware.",
+    "Judgment Day: July 25th, 2004. Skynet becomes self-aware.",
     "'Was talking to my brother over the radio the other day. He said his boys saw a battleship floating in the air. It passed by them on it's way east. The guy's gone nuts, I'm telling ya.'",
     "'Be careful who you call a friend. I travelled alone, with a chick, for two months trynna make it to New Ibiza... Only to wake up in the dead of night, all my shit gone.' - Keyshawn B",
     "'Bots took my children and killed my wife. If it were up to me, everyone should join the Resistance.' - John Doe",
