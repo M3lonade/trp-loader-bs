@@ -85,22 +85,22 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   // Function to add an assembly line to the right feed
-  function addRightAssemblyLine() {
-    const feed = document.getElementById('assembly-feed-right');
-    const lineData = getRandomAssemblyLine();
-
-    feed.innerHTML += `<div class="assembly-line"><span>${rightLineNumber}</span> <span>${lineData.address}</span> <span>${lineData.instruction}</span></div>`;
-    rightLineNumber++;
-
-    currentAsmLineRight++;
-
-    if (currentAsmLineRight > maxLines) {
-      feed.firstChild.remove();
-      currentAsmLineRight--;
-    }
-
-    setTimeout(addRightAssemblyLine, rightAsmDelay);
-  }
+//  function addRightAssemblyLine() {
+//    const feed = document.getElementById('assembly-feed-right');
+//    const lineData = getRandomAssemblyLine();
+//
+//    feed.innerHTML += `<div class="assembly-line"><span>${rightLineNumber}</span> <span>${lineData.address}</span> <span>${lineData.instruction}</span></div>`;
+//    rightLineNumber++;
+//
+//    currentAsmLineRight++;
+//
+//    if (currentAsmLineRight > maxLines) {
+//      feed.firstChild.remove();
+//      currentAsmLineRight--;
+//    }
+//
+//    setTimeout(addRightAssemblyLine, rightAsmDelay);
+//  }
 
   // Start scrolling text on both sides
   addLeftAssemblyLine();
@@ -109,15 +109,13 @@ document.addEventListener('DOMContentLoaded', function () {
   /* Cursortyper */
   document.addEventListener('DOMContentLoaded', function () {
     const consoleText = document.getElementById('console-text');
-    const cursor = document.getElementById('cursor');
-    const typingSpeed = 75;
-    const wipingSpeed = 15;
-    const pauseAfterTyping = 5000;
-    let shuffledRumors = shuffleArray([...rumors]);
+    const typingSpeed = 10; // Adjust typing speed here
+    const pauseAfterTyping = 8000; // Adjust pause before wiping and typing next message
+    let shuffledRumors = shuffleArray([...rumors]); // Shuffling rumors
     let arrayIndex = 0;
     let charIndex = 0;
   
-    // Fisher-Yates Shuffle
+    // Fisher-Yates Shuffle function
     function shuffleArray(array) {
       for (let i = array.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
@@ -130,25 +128,23 @@ document.addEventListener('DOMContentLoaded', function () {
       if (charIndex < shuffledRumors[arrayIndex].length) {
         consoleText.textContent += shuffledRumors[arrayIndex][charIndex];
         charIndex++;
-        setTimeout(typeText, typingSpeed);
+        setTimeout(typeText, typingSpeed); // Continue typing
       } else {
-        setTimeout(wipeText, pauseAfterTyping);
+        setTimeout(startNextText, pauseAfterTyping); // Pause after finishing typing
       }
     }
   
-    function wipeText() {
-      if (charIndex > 0) {
-        consoleText.textContent = consoleText.textContent.slice(0, -1);
-        charIndex--;
-        setTimeout(wipeText, wipingSpeed);
-      } else {
-        arrayIndex++;
-        if (arrayIndex >= shuffledRumors.length) {
-          shuffledRumors = shuffleArray([...rumors]);  // Reshuffle when all items are typed
-          arrayIndex = 0;
-        }
-        setTimeout(typeText, typingSpeed);
+    function startNextText() {
+      // Clear only the dynamic text
+      consoleText.textContent = '';
+      charIndex = 0; // Reset charIndex for new text
+      arrayIndex++; // Move to the next message
+  
+      if (arrayIndex >= shuffledRumors.length) {
+        shuffledRumors = shuffleArray([...rumors]); // Reshuffle if all are typed
+        arrayIndex = 0; // Start from the beginning
       }
+      setTimeout(typeText, typingSpeed); // Start typing the next text
     }
   
     // Start the typing effect
