@@ -44,15 +44,16 @@ body {
 }
 
 .logo {
-  width: 20vw;
-  max-width: 20vw;
+  width: 25vw;
+  max-width: 200px;
   height: auto;
   margin-bottom: 1vh;
   z-index: 2;
 }
 
 .logo img {
-  width: 10vh;
+  width: 15vh;
+  max-width: 200px;
   height: auto;
   display: block;
 }
