@@ -119,8 +119,8 @@ h3.scan-text {
   bottom: 0;
   left: 50vw;
   transform: translateX(-50%); /* Center horizontally */
-  width: 60vw; /* Adjust width to fit within the layout */
-  height: 20vh;
+  width: 45vw; /* Adjust width to fit within the layout */
+  height: 10vh;
   background-color: rgba(0, 0, 0, 0.8);
   padding: 1vw;
   font-family: 'Courier New', monospace;
