@@ -1,11 +1,7 @@
-version: '3'
-
 services:
   web:
     build:
       context: .
-      dockerfile: Dockerfile  # Ensure this path points to your Dockerfile
+      dockerfile: Dockerfile  # Use the Dockerfile in the current directory
     ports:
-      - "80:80"
-    volumes:
-      - ./src:/app
+      - "80:80"  # Expose port 80 of the container to port 80 on the host

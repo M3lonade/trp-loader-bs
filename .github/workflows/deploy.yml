@@ -18,9 +18,8 @@ jobs:
       with:
         ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
 
-    # Removing ssh-keyscan for now
-    # - name: Add Raspberry Pi to known hosts
-    #   run: ssh-keyscan -p ${{ secrets.RPI_PORT }} ${{ secrets.RPI_IP }} >> ~/.ssh/known_hosts
+    - name: Add Raspberry Pi to known hosts
+      run: ssh-keyscan -p ${{ secrets.RPI_PORT }} ${{ secrets.RPI_IP }} >> ~/.ssh/known_hosts
 
     - name: Verify SSH Connection
       run: |
