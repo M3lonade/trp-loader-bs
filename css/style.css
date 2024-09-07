@@ -120,14 +120,14 @@ h3.scan-text {
   left: 50vw;
   transform: translateX(-50%); /* Center horizontally */
   width: 45vw; /* Adjust width to fit within the layout */
-  height: 10vh;
+  height: 15vh;
   background-color: rgba(0, 0, 0, 0.8);
   padding: 1vw;
   font-family: 'Courier New', monospace;
   font-size: 0.8vw;
   color: #00ff00;
   text-shadow: 0 0 5px rgba(255, 255, 255, 0.8); /* Glowing white effect */
-  overflow-y: auto;
+  overflow: hidden;
   z-index: 10; /* Make sure it’s above other elements */
   opacity: 0.8;
 }
