@@ -18,9 +18,12 @@ jobs:
       with:
         ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
 
+    - name: Add Raspberry Pi to known hosts
+      run: ssh-keyscan -p ${{ secrets.RPI_PORT }} ${{ secrets.RPI_IP }} >> ~/.ssh/known_hosts
+
     - name: Verify SSH Connection
       run: |
-        ssh -o StrictHostKeyChecking=no -p ${{ secrets.RPI_PORT }} ${{ secrets.RPI_USER }}@${{ secrets.RPI_IP }} 'echo "Connected successfully to Raspberry Pi"'
+        ssh -v -o StrictHostKeyChecking=no -p ${{ secrets.RPI_PORT }} ${{ secrets.RPI_USER }}@${{ secrets.RPI_IP }} 'echo "Connected successfully to Raspberry Pi"'
 
     - name: Deploy TRP-Loader-BS in Docker
       run: |
