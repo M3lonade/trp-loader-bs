@@ -70,7 +70,7 @@ body {
 }
 
 h1.scan-text {
-  font-size: 1.8vw;
+  font-size: 2vw;
   margin-bottom: 1vh;
   letter-spacing: 0.1em;
   z-index: 5;
@@ -82,13 +82,13 @@ h2.scan-text, h3.scan-text {
 }
 
 h2.scan-text {
-  font-size: 1vw;
+  font-size: 1.5vw;
   color: #37ddfa;
   text-shadow: 0 0 5px #00ddff;
 }
 
 h3.scan-text {
-  font-size: 0.65vw;
+  font-size: 1vw;
   color: #3ccde7;
   text-shadow: 0 0 5px #00ddff;
 }
