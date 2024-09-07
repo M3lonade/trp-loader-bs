@@ -331,7 +331,7 @@ h3.scan-text {
   position: absolute;
   top: 25vh;
   right: 2vw;
-  max-width: 25vw;
+  max-width: 20vw;
   max-height: calc(100vh - 2vh); /* Cap height to prevent overflow */
   background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent background */
   border: 0.1vh solid #ffffff;
