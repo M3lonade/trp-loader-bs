@@ -1,0 +1,28 @@
+name: Deploy TRP-Loader-BS Site to Raspberry Pi
+
+on:
+  push:
+    branches:
+      - main  # Trigger deployment on push to the main branch
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up SSH key
+      uses: webfactory/ssh-agent@v0.5.3
+      with:
+        ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+
+    - name: Deploy TRP-Loader-BS in Docker
+      run: |
+        ssh -o StrictHostKeyChecking=no -p ${{ secrets.RPI_PORT }} ${{ secrets.RPI_USER }}@${{ secrets.RPI_IP }} '
+        cd /home/josh/trp-loader-bs &&
+        git pull origin main &&
+        docker-compose down &&
+        docker-compose up -d --build
+        '

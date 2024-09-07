@@ -1,0 +1,10 @@
+version: '3'
+
+services:
+  web:
+    image: trp-loader-bs:latest
+    build:
+      context: .
+    ports:
+      - "80:80"  # Expose port 80 on the host machine
+    restart: always
