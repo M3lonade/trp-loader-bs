@@ -143,9 +143,9 @@ h3.scan-text {
   position: absolute;
   top: 50vh;
   left: 50vw;
-  width: 40vw; /* Increased size */
-  max-width: 800px;
-  height: 40vh; /* Increased height */
+  width: 50vw; /* Increased size */
+  max-width: 1000px;
+  height: 50vh; /* Increased height */
   max-height: 800px;
   transform: translate(-50%, -50%) rotate(0deg); /* Centered */
   border: 2px solid #fff; /* Optional: Visible brackets */
