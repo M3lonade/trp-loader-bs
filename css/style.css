@@ -310,7 +310,7 @@ h3.scan-text {
 /* Lore Feed Text Styling */
 .lore-feed {
   font-family: 'Courier New', monospace;
-  font-size: 0.8vw;
+  font-size: 1vw;
   color: #18f3e1;
   text-shadow: 0 0 0.5vh rgba(255, 255, 255, 0.8);
   z-index: 3;
