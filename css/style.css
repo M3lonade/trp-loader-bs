@@ -273,7 +273,7 @@ h3.scan-text {
 /* Lore Feed Container (Right Column) */
 .lore-feed-container {
   position: absolute;
-  top: 20vh;
+  top: 25vh;
   right: 1vw;
   max-width: 18vw;
   width: 18vw;
