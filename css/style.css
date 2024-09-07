@@ -144,7 +144,9 @@ h3.scan-text {
   top: 50%;
   left: 50%;
   width: 40vw; /* Increased size */
+  max-width: 800px;
   height: 40vh; /* Increased height */
+  max-height: 800px;
   transform: translate(-50%, -50%) rotate(0deg); /* Centered */
   border: 2px solid #fff; /* Optional: Visible brackets */
   border-radius: 10px; /* Optional: Rounded bracket */
