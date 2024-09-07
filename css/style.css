@@ -34,8 +34,8 @@ body {
 /* Top Right Logo and Text (HUD) */
 #top-right {
   position: absolute;
-  top: 20px;
-  right: 20px; /* Adjust to top-right */
+  top: 2vh;
+  right: 2vw; /* Adjust to top-right */
   z-index: 10;
   text-align: right; /* Align text to the right */
   display: flex;
@@ -119,9 +119,9 @@ h3.scan-text {
   left: 50%;
   transform: translateX(-50%); /* Center horizontally */
   width: 60%; /* Adjust width to fit within the layout */
-  height: 150px;
+  height: 20vh;
   background-color: rgba(0, 0, 0, 0.8);
-  padding: 10px;
+  padding: 1vw;
   font-family: 'Courier New', monospace;
   font-size: 1.2rem;
   color: #00ff00;
@@ -142,8 +142,10 @@ h3.scan-text {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 1200px; /* Increased size */
-  height: 800px; /* Increased height */
+  width: 80vw; /* Increased size */
+  height: 60vh; /* Increased height */
+  max-width: 1000px;
+  max-height: 600px;
   transform: translate(-50%, -50%) rotate(0deg); /* Centered */
   border: 2px solid #fff; /* Optional: Visible brackets */
   border-radius: 10px; /* Optional: Rounded bracket */
@@ -157,7 +159,7 @@ h3.scan-text {
   top: 50%;
   left: 50%;
   width: 100%; /* Adjust size to fit within the bracket */
-  height: auto;
+  height: 100%;
   transform: translate(-50%, -50%) scale(0.5) rotate(180deg); /* Start rotated and small */
   transition: transform 4s ease-out, opacity 4s ease-in-out; /* Rotate, zoom, and opacity change */
   opacity: 0; /* Start invisible for holographic fade-in */
@@ -176,8 +178,8 @@ h3.scan-text {
     0deg,
     rgba(90, 0, 0, 0.171) 0,
     rgba(146, 0, 0, 0.212) 2px,
-    transparent 5px,
-    transparent 5px
+    transparent 0.5vh,
+    transparent 0.5vh
   );
   z-index: 3; /* Ensure it’s above the map but below the main UI */
   opacity: 1; /* Subtle scanlines for the hologram look */
@@ -198,24 +200,24 @@ h3.scan-text {
 .assembly-feed-container-left, .assembly-feed-container-right {
   position: absolute;
   background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent background */
-  border: 1px solid #ffffff; /* White border for the container */
+  border: 0.1vh solid #ffffff; /* White border for the container */
   overflow: hidden; /* Ensure content doesn't overflow */
   z-index: 1; /* Place above the background but below important elements */
-  box-shadow: 0 0 10px rgba(255, 255, 255, 0.5); /* Subtle glow */
+  box-shadow: 0 0 1vh rgba(255, 255, 255, 0.5); /* Subtle glow */
 }
 
 /* Positioning for the Left Container */
 .assembly-feed-container-left {
-  top: 10px;
-  left: 10px;
-  max-height: calc(100vh - 20px);
-  max-width: 350px
+  top: 1vh;
+  left: 1vw;
+  max-height: calc(100vh - 2vh);
+  max-width: 30vw;
 }
 
 /* Positioning for the Right Container */
 .assembly-feed-container-right {
-  top: 30%;
-  right: 10px;
+  top: 30vh;
+  right: 1vw;
 }
 
 /* Scanlines Effect for Containers */
@@ -230,9 +232,9 @@ h3.scan-text {
   background: repeating-linear-gradient(
     0deg,
     rgba(255, 255, 255, 0.05) 0,
-    rgba(255, 255, 255, 0.05) 2px,
-    transparent 3px,
-    transparent 3px
+    rgba(255, 255, 255, 0.05) 0.2vh,
+    transparent 0.3vh,
+    transparent 0.3vh
   );
   z-index: 2; /* Ensure scanlines are above the background but below text */
   opacity: 0.3; /* Subtle scanlines */
@@ -243,13 +245,13 @@ h3.scan-text {
 .assembly-feed-left {
   position: relative; /* Position inside container */
   font-family: 'Courier New', monospace;
-  font-size: 12px;
-  line-height: 16px;
+  font-size: 0.8rem;
+  line-height: 0.5vw;
   color: #ffffff;
-  text-shadow: 0 0 5px rgba(255, 255, 255, 0.8); /* Glowing white effect */
+  text-shadow: 0 0 0.5vh rgba(255, 255, 255, 0.8); /* Glowing white effect */
   z-index: 3; /* Ensure it's above the scanlines */
   opacity: 0.8; /* Adjust opacity for better readability */
-  padding: 10px;
+  padding: 0.5vh;
   overflow-y: auto; /* Allow scrolling if content overflows */
 }
 
@@ -257,13 +259,13 @@ h3.scan-text {
 .assembly-feed-right {
   position: relative; /* Position inside container */
   font-family: 'Courier New', monospace;
-  font-size: 12px;
-  line-height: 16px;
+  font-size: 0.8rem;
+  line-height: 1.5vw;
   color: #ffffff;
-  text-shadow: 0 0 5px rgba(255, 255, 255, 0.8); /* Glowing white effect */
+  text-shadow: 0 0 0.5vh rgba(255, 255, 255, 0.8); /* Glowing white effect */
   z-index: 3; /* Ensure it's above the scanlines */
   opacity: 0.8; /* Adjust opacity for better readability */
-  padding: 10px;
+  padding: 0.5vh;
   overflow-y: auto; /* Allow scrolling if content overflows */
 }
 
@@ -281,16 +283,16 @@ h3.scan-text {
 /* Music Play Button */
 #play-music {
   position: absolute;
-  bottom: 180px; /* Adjusted to be above the console */
+  bottom: 20vh; /* Adjusted to be above the console */
   left: 50%;
   transform: translateX(-50%);
   z-index: 10;
-  padding: 10px 20px;
+  padding: 1vh 2vh;
   background-color: #ff0000;
   color: white;
   border: none;
   cursor: pointer;
-  font-size: 1rem;
+  font-size: 0.8rem;
   font-family: 'Orbitron', sans-serif; /* Sci-fi font */
   text-transform: uppercase;
   transition: background-color 0.3s ease;
@@ -326,14 +328,14 @@ h3.scan-text {
 /* Lore Feed Container (Right Column) */
 .lore-feed-container {
   position: absolute;
-  top: 25%;
-  right: 30px;
-  max-width: 600px;
-  max-height: calc(100vh - 20px); /* Cap height to prevent overflow */
+  top: 25vh;
+  right: 2vw;
+  max-width: 20vw;
+  max-height: calc(100vh - 2vh); /* Cap height to prevent overflow */
   background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent background */
-  border: 1px solid #ffffff;
-  box-shadow: 0 0 10px rgba(255, 255, 255, 0.5); /* Subtle glow */
-  padding: 10px;
+  border: 0.1vh solid #ffffff;
+  box-shadow: 0 0 1vh rgba(255, 255, 255, 0.5); /* Subtle glow */
+  padding: 1vh;
   z-index: 1;
   overflow-y: auto; /* Scrollable if content exceeds container height */
 }
@@ -350,9 +352,9 @@ h3.scan-text {
   background: repeating-linear-gradient(
     0deg,
     rgba(255, 255, 255, 0.05) 0,
-    rgba(255, 255, 255, 0.05) 2px,
-    transparent 3px,
-    transparent 3px
+    rgba(255, 255, 255, 0.05) 0.2vh,
+    transparent 0.3vh,
+    transparent 0.3vh
   );
   z-index: 2;
   opacity: 0.3;
@@ -374,8 +376,8 @@ h3.scan-text {
   font-family: 'Courier New', monospace;
   font-size: 1.2rem;
   color: #18f3e1;
-  text-shadow: 0 0 5px rgba(255, 255, 255, 0.8);
+  text-shadow: 0 0 0.5vh rgba(255, 255, 255, 0.8);
   z-index: 3;
   opacity: 0.8;
-  padding: 10px;
+  padding: 1vh;
 }
