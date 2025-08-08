@@ -4,7 +4,7 @@ var Config = {};
 
 window.motdArray = [
   "Welcome to Terminator Roleplay!",
-  "Join the community at www.taconbanana.com, hosting roleplay excellence since 2007.",
+  "Join the community at thefuturewar.net!",
 ];
 
 
